@@ -32,7 +32,7 @@ export default function DetalheEventos({ navigation }) {
                     <Text style={styles.description}>40h horas</Text>
                 </View>
                 <View style={styles.btn}>
-                    <TouchableOpacity style={styles.participarBtn} onPress={() => Alert.alert('Inscrição realizada com sucesso!')} >
+                    <TouchableOpacity style={styles.participarBtn} onPress={() => Alert.alert('PostEduc','Inscrição realizada com sucesso!')} >
                         <Text style={styles.participarBtnText}>Participar</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.participarBtn2} onPress={() => navigation.navigate('HomeEventos')} >

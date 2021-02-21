@@ -1,9 +1,17 @@
-import React from 'react';
-import { Platform, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, {useState} from 'react';
+import { Platform, KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native';
 import {styles} from '../assets/css/Styles';
 
 
 export default function CadastroLogin({ navigation }) {
+
+    const [usuario, setUsuario] = useState('');
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+
+    const cadastrarUsuario = () => {
+        Alert.alert("Sucesso", "Cadastro Realizado com Sucesso!");
+    }
 
     return (
         <KeyboardAvoidingView 
@@ -13,12 +21,29 @@ export default function CadastroLogin({ navigation }) {
                 <Text style={styles.tituloCadastro}>Faça o seu Cadastro</Text>
             </View>
             <View style={styles.loginForm}>
-                <TextInput style={styles.loginInput} placeholder='Digite um usuário' />
-                <TextInput style={styles.loginInput} placeholder='Digite um e-mail'  />
-                <TextInput style={styles.loginInput} placeholder='Digite a senha' secureTextEntry={true} />
-                <TextInput style={styles.loginInput} placeholder='Digite a senha novamente' secureTextEntry={true} />
+                <TextInput 
+                style={styles.loginInput} 
+                placeholder='Digite um usuário'
+                onChangeText={text=>setUsuario(text)}
+                />
+                <TextInput 
+                style={styles.loginInput} 
+                placeholder='Digite um e-mail' 
+                autoCorrect={false}
+                onChangeText={text=>setEmail(text)}  
+                />
+                <TextInput 
+                style={styles.loginInput} 
+                placeholder='Digite a senha' 
+                secureTextEntry={true} 
+                onChangeText={text=>setSenha(text)}/>
+                <TextInput 
+                style={styles.loginInput} 
+                placeholder='Digite a senha novamente' 
+                secureTextEntry={true} 
+                />
                 <View style={[styles.btn, {flexDirection: 'row'} ]}>
-                    <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('HomeEventos')} >
+                    <TouchableOpacity style={styles.loginBtn} onPress={() => cadastrarUsuario(navigation.navigate('HomeEventos'))} >
                         <Text style={styles.loginBtnText}>Cadastrar</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.loginBtn2} onPress={() => navigation.navigate('Login')} >
